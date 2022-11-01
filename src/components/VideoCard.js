@@ -18,29 +18,36 @@ const Image = styled('img')(({ theme }) => ({
   width: '350px',
   height: '200px',
   objectFit: 'cover',
-  objectPosition: 'center'
+  objectPosition: 'center',
+  borderRadius: '13px'
 }));
 
 function videoCard({ item }) {
   return (
-    <Box m={4} sx={{ maxWidth: '320px' }}>
+    <Box m={3} sx={{ maxWidth: '320px' }}>
       <Image alt={item.title} src={item.thumb} />
-      <Box display={'flex'} alignItems={'center'} mt="1">
-        <Avatar alt={item.authorName} src={item.authorAvatar}>
+      <Box display={'flex'} alignItems={'start'} mt={1}>
+        <Avatar
+          width={8}
+          height={8}
+          alt={item.authorName}
+          src={item.authorAvatar}
+        >
           SS
         </Avatar>
-        <Typography p={2} variant={'h6'} noWrap>
-          {item.title}
-        </Typography>
+        <Box pl={2}>
+          <Typography sx={{ maxWidth: '280px' }} variant={'h5'} noWrap>
+            {item.title}
+          </Typography>
+          <Typography variant={'body2'} noWrap>
+            {item.authorName}
+          </Typography>
+          <Typography variant={'body2'} noWrap>
+            {item.views} views • {item.date}
+          </Typography>
+        </Box>
       </Box>
-      <Box>
-        <Typography variant={'body2'} noWrap>
-          {item.authorName}
-        </Typography>
-        <Typography variant={'body2'} noWrap>
-          {item.views} views • {item.date}
-        </Typography>
-      </Box>
+      <Box></Box>
     </Box>
   );
 }
