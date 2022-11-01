@@ -6,7 +6,7 @@ import { colors } from '@mui/material';
 const theme = createTheme({
   palette: {
     background: {
-      default: colors.common.white,
+      default: colors.grey[50],
       dark: '#F4F6F8',
       paper: colors.common.white
     },
@@ -17,6 +17,7 @@ const theme = createTheme({
       main: '#3EA6FF'
     },
     text: {
+      youtube: '#0F0F0F',
       primary: colors.blueGrey[900],
       secondary: colors.blueGrey[600]
     },

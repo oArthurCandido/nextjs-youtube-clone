@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
 
-module.exports = nextConfig
+  images: {
+    domains: ['i.ytimg.com', 'yt3.ggpht.com', 'yt3.ggpht.com']
+  }
+};
+
+module.exports = nextConfig;

@@ -17,7 +17,7 @@ import Microphone from 'mdi-material-ui/Microphone';
 import VideoPlusOutline from 'mdi-material-ui/VideoPlusOutline';
 import BellOutline from 'mdi-material-ui/BellOutline';
 import Avatar from '@mui/material/Avatar';
-import Icon from '../Icons/Icon';
+import Icon from 'src/components/Icons/Icon';
 
 const TopAppBar = styled(AppBar)(({ theme }) => ({
   boxShadow: 'none',
@@ -41,8 +41,8 @@ function TopBar() {
     <TopAppBar>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box component={'span'} sx={{ display: 'flex', alignItems: 'center' }}>
-          <IconButton color="inherit">
-            <Menu sx={{ fontSize: '30px' }} />
+          <IconButton sx={{ marginLeft: '-10px' }} color="inherit">
+            <Icon name="bgMenu" />
           </IconButton>
           {/* <Image src={'/YouTube-Logo.png'} width={90} height={55} /> */}
           <Youtube
