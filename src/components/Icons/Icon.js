@@ -3,12 +3,14 @@ import * as icons from './svgs/_index';
 
 const iconSizes = {
   sm: '16px',
+  sm2: '18px',
+  sm3: '20px',
   md: '24px',
   lg: '32px',
   xl: '48px'
 };
 
-export default function Icon({ size, name, color }) {
+export default function Icon({ size, name, color, styleSheet }) {
   const CurrentIcon = icons[name];
   if (!CurrentIcon)
     return (
@@ -22,7 +24,8 @@ export default function Icon({ size, name, color }) {
       as="svg"
       sx={{
         width: iconSizes[size],
-        height: iconSizes[size]
+        height: iconSizes[size],
+        padding: styleSheet?.padding
       }}
       fill="currentColor"
       color={color}

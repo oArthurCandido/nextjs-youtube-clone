@@ -28,7 +28,9 @@ function NavBar() {
           <ListItemIcon>
             <Icon name={'home'} size={'md'} color={'black'} />
           </ListItemIcon>
-          <ListItemText>Início</ListItemText>
+          <ListItemText>
+            <Typography>Início</Typography>
+          </ListItemText>
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
@@ -36,9 +38,6 @@ function NavBar() {
             <Icon name={'shorts'} size={'md'} color={'black'} />
           </ListItemIcon>
           <ListItemText>Shorts</ListItemText>
-          <Typography variant="body2" color="text.secondary">
-            ⌘C
-          </Typography>
         </MenuItem>
         <MenuItem>
           <ListItemIcon>

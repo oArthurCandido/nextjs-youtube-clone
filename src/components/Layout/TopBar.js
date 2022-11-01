@@ -17,6 +17,7 @@ import Microphone from 'mdi-material-ui/Microphone';
 import VideoPlusOutline from 'mdi-material-ui/VideoPlusOutline';
 import BellOutline from 'mdi-material-ui/BellOutline';
 import Avatar from '@mui/material/Avatar';
+import Icon from '../Icons/Icon';
 
 const TopAppBar = styled(AppBar)(({ theme }) => ({
   boxShadow: 'none',
@@ -26,6 +27,16 @@ const TopAppBar = styled(AppBar)(({ theme }) => ({
 }));
 
 function TopBar() {
+  const [isFocused, setIsFocused] = React.useState(false);
+
+  const borderSeter = () => {
+    if (isFocused) {
+      return '1px solid #175285';
+    } else {
+      return '1px solid #b8b8b8';
+    }
+  };
+
   return (
     <TopAppBar>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -37,18 +48,12 @@ function TopBar() {
           <Youtube
             sx={{ color: 'red', fontSize: '34.29px', marginLeft: '10px' }}
           />
+          <Icon name={'youtubeFont'} color={'black'} />
+
           <Typography
-            sx={{ letterSpacing: '-1.5px' }}
-            variant={'h4'}
-            fontSize={20}
-            fontWeight={600}
-          >
-            Premium
-          </Typography>
-          <Typography
-            sx={{ marginTop: '-15px' }}
+            sx={{ marginTop: '-15px', paddingLeft: '10px' }}
             variant="overline"
-            fontSize={9}
+            fontSize={8.5}
           >
             BR
           </Typography>
@@ -61,15 +66,25 @@ function TopBar() {
               display: 'flex',
               alignItems: 'center',
               width: 400,
-              borderRadius: '2px',
+              borderRadius: '20px 0 0 20px',
               boxShadow: 'none',
-              border: '1px solid #e6e6e6'
+              border: borderSeter
             }}
           >
+            {isFocused ? (
+              <Icon
+                styleSheet={{ padding: '0 0 0 10px' }}
+                name={'magnify'}
+                color={'black'}
+                size={'lg'}
+              />
+            ) : null}
             <InputBase
-              sx={{ ml: 1, flex: 1 }}
+              sx={{ ml: 2, flex: 1 }}
               placeholder="Pesquisar"
               inputProps={{ 'aria-label': 'search google maps' }}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
             />
           </Paper>
           <Button
@@ -78,12 +93,13 @@ function TopBar() {
             sx={{
               p: '6px',
               backgroundColor: '#F6F6F6',
-              borderRadius: '2px',
-              border: '1px solid #e6e6e6'
+              marginLeft: '-10px',
+              borderRadius: '0 20px 20px 0',
+              border: '1px solid #b8b8b8'
             }}
             aria-label="search"
           >
-            <Search color="inherit" />
+            <Icon name={'magnify'} color={'black'} size={'md'} />
           </Button>
           <IconButton sx={{ marginLeft: '7px' }} color={'inherit'}>
             <Microphone sx={{ fontSize: '23px' }} />
