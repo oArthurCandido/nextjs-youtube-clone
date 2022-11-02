@@ -18,22 +18,25 @@ function Layout({ children, title }) {
   });
   const Wrapper = styled(Box)({
     display: 'flex',
-    flex: '1 1 auto',
-    overflow: 'hidden',
+    // flex: '1 1 auto',
+    // overflow: 'hidden',
     paddingTop: 64,
     [theme.breakpoints.up('lg')]: {
-      // paddingLeft: 256
+      maxWidth: '85%'
+      // marginLeft: 106,
+      // paddingRight: 50
     }
   });
   const ContentContainer = styled(Box)({
-    display: 'flex',
-    flex: '1 1 auto',
-    overflow: 'hidden'
+    display: 'flex'
+    // flex: '1 1 auto',
+    // flexWrap: 'wrap',
+    // overflow: 'hidden'
   });
   const Content = styled(Box)({
-    flex: '1 1 auto',
-    height: '100%',
-    overflow: 'auto'
+    // flex: '1 1 auto',
+    height: '100%'
+    // overflow: 'auto'
   });
 
   return (

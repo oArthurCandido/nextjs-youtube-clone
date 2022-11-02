@@ -15,8 +15,9 @@ import { styled } from '@mui/material/styles';
 import React from 'react';
 
 const Image = styled('img')(({ theme }) => ({
-  width: '350px',
-  height: '200px',
+  // maxWidth: '350px',
+  width: '100%',
+  maxHeight: '200px',
   objectFit: 'cover',
   objectPosition: 'center',
   borderRadius: '13px'
@@ -24,7 +25,7 @@ const Image = styled('img')(({ theme }) => ({
 
 function videoCard({ item }) {
   return (
-    <Box m={3} sx={{ maxWidth: '320px' }}>
+    <Box m={3} sx={{ width: '100%', maxWidth: '100%' }}>
       <Image alt={item.title} src={item.thumb} />
       <Box display={'flex'} alignItems={'start'} mt={1}>
         <Avatar
@@ -35,8 +36,8 @@ function videoCard({ item }) {
         >
           SS
         </Avatar>
-        <Box pl={2}>
-          <Typography sx={{ maxWidth: '280px' }} variant={'h5'} noWrap>
+        <Box pl={2} sx={{ maxWidth: '100%' }}>
+          <Typography mr={6} sx={{ maxWidth: '100%' }} variant={'h5'} noWrap>
             {item.title}
           </Typography>
           <Typography variant={'body2'} noWrap>

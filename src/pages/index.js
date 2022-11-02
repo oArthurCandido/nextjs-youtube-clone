@@ -53,7 +53,9 @@ export default function Home() {
       <Box p={2}>
         <Grid container spacing={4}>
           {data.map(item => (
-            <VideoCard key={item.id} item={item} />
+            <Grid item xs={12} sm={6} md={4} lg={3}>
+              <VideoCard key={item.id} item={item} />
+            </Grid>
           ))}
         </Grid>
       </Box>
