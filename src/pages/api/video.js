@@ -21,7 +21,13 @@ const handler = nc()
       updatedAt: new Date()
     });
 
-    return res.status(200).json({ ok: true });
+    if (req.file) {
+      return res.status(200).json({ message: 'Video uploaded successfully!' });
+    } else {
+      return res.status(500).json({ message: 'Error uploading video!' });
+    }
+
+    // return res.status(200).json({ ok: true });
   })
   .patch(async (req, res) => {
     throw new Error('Throws me around! Error can be caught and handled.');
