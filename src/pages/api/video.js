@@ -1,5 +1,5 @@
 import nc from 'next-connect';
-import upload from 'src/utils/upload';
+import upload from 'src/utils/uploads';
 
 const handler = nc()
   .use(upload.single('file'))
