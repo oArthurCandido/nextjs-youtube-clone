@@ -35,7 +35,7 @@ function NavBar() {
     <Paper sx={{ paddingTop: 7, width: 240, maxWidth: '100%' }}>
       <MenuList>
         {menuItems.map((item, index) => (
-          <MenuItem>
+          <MenuItem key={index}>
             <ListItemIcon sx={{ paddingLeft: '6px' }}>
               <Icon name={item.name} size={'md'} color={'black'} />
             </ListItemIcon>
