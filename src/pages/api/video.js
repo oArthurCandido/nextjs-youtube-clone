@@ -1,6 +1,6 @@
 import { ObjectId } from 'mongodb';
 import nc from 'next-connect';
-import connectToDatabase from 'src/utils/mogodb';
+import connectToDatabase from 'src/utils/mongodb';
 import upload from 'src/utils/uploads';
 import jwt from 'next-auth/jwt';
 import { getToken } from 'next-auth/jwt';

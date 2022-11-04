@@ -1,4 +1,4 @@
-import connectToDatabase from 'src/utils/mogodb';
+import connectToDatabase from 'src/utils/mongodb';
 
 export async function getVideos() {
   const { db } = await connectToDatabase();
