@@ -18,6 +18,8 @@ import VideoPlusOutline from 'mdi-material-ui/VideoPlusOutline';
 import BellOutline from 'mdi-material-ui/BellOutline';
 import Avatar from '@mui/material/Avatar';
 import Icon from 'src/components/Icons/Icon';
+import { AccountCircle } from '@mui/icons-material';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 const TopAppBar = styled(AppBar)(({ theme }) => ({
   boxShadow: 'none',
@@ -28,6 +30,8 @@ const TopAppBar = styled(AppBar)(({ theme }) => ({
 
 function TopBar() {
   const [isFocused, setIsFocused] = React.useState(false);
+
+  const { data: session } = useSession();
 
   const borderSeter = () => {
     if (isFocused) {
@@ -109,7 +113,6 @@ function TopBar() {
           display={'flex'}
           alignItems={'center'}
           justifyContent={'space-between'}
-          width={'140px'}
         >
           <IconButton color="inherit">
             <VideoPlusOutline />
@@ -117,11 +120,24 @@ function TopBar() {
           <IconButton color="inherit">
             <BellOutline />
           </IconButton>
-          <Avatar
-            vatiant={''}
-            src="/avatar.jpg"
-            sx={{ width: 32, height: 32 }}
-          />
+          {!session ? (
+            <Button
+              color={'secondary'}
+              component={'a'}
+              variant={'outlined'}
+              startIcon={<AccountCircle />}
+              onClick={() => signIn('google')}
+            >
+              Faça login
+            </Button>
+          ) : (
+            <Avatar
+              vatiant={''}
+              src={session.user.image}
+              sx={{ width: 32, height: 32 }}
+              onClick={() => signOut('google')}
+            />
+          )}
         </Box>
       </Toolbar>
     </TopAppBar>
