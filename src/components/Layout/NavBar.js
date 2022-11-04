@@ -12,8 +12,10 @@ import ContentPaste from '@mui/icons-material/ContentPaste';
 import Cloud from '@mui/icons-material/Cloud';
 import Home from '@mui/icons-material/HomeOutlined';
 import Icon from 'src/components/Icons/Icon';
+import styled from '@mui/material/styles/styled';
 
 import { createSvgIcon } from '@mui/material/utils';
+import theme from 'src/theme';
 
 function NavBar() {
   const menuItems = [
@@ -31,8 +33,18 @@ function NavBar() {
     }
   ];
 
+  const PaperG = styled(Paper)(({ theme }) => ({
+    paddingTop: '60px',
+    width: 240,
+    height: '100%',
+    [theme.breakpoints.down('md')]: {
+      display: 'none'
+    },
+    boxShadow: 'none'
+  }));
+
   return (
-    <Paper sx={{ paddingTop: 7, width: 240, maxWidth: '100%' }}>
+    <PaperG>
       <MenuList>
         {menuItems.map((item, index) => (
           <MenuItem key={index}>
@@ -55,7 +67,7 @@ function NavBar() {
           <ListItemText>Web Clipboard</ListItemText>
         </MenuItem>
       </MenuList>
-    </Paper>
+    </PaperG>
   );
 }
 

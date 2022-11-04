@@ -1,32 +1,34 @@
-import {
-  Box,
-  Typography,
-  Button,
-  Paper,
-  MenuList,
-  MenuItem,
-  ListItemText,
-  ListItemIcon,
-  Divider,
-  Avatar
-} from '@mui/material';
-import { styled } from '@mui/material/styles';
-
 import React from 'react';
+import { Box, Typography, Avatar } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { useRouter } from 'next/router';
+import ImageNext from 'next/image';
 
-const Image = styled('img')(({ theme }) => ({
+const Image = styled(ImageNext)(({ theme }) => ({
   // maxWidth: '350px',
   width: '100%',
-  maxHeight: '200px',
-  objectFit: 'cover',
-  objectPosition: 'center',
+  // maxHeight: '200px',
+  height: '100%',
+  // objectFit: 'cover',
+  // objectPosition: 'center',
   borderRadius: '13px'
 }));
 
 function videoCard({ item }) {
+  const router = useRouter();
+
   return (
-    <Box m={3} sx={{ width: '100%', maxWidth: '100%' }}>
-      <Image alt={item.title} src={item.thumb} />
+    <Box sx={{ width: '100%', maxWidth: '100%' }}>
+      <Image
+        alt={item.title}
+        src={item.thumb}
+        width={350}
+        height={200}
+        layout="intrinsic"
+        onClick={() =>
+          router.push({ pathname: '/video/[id]', query: { id: item._id } })
+        }
+      />
       <Box display={'flex'} alignItems={'start'} mt={1}>
         <Avatar
           width={8}
@@ -37,7 +39,7 @@ function videoCard({ item }) {
           SS
         </Avatar>
         <Box pl={2} sx={{ maxWidth: '100%' }}>
-          <Typography mr={6} sx={{ maxWidth: '100%' }} variant={'h5'} noWrap>
+          <Typography mr={5} sx={{ maxWidth: '100%' }} variant={'h5'} noWrap>
             {item.title}
           </Typography>
           <Typography variant={'body2'} noWrap>
