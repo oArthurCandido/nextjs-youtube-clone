@@ -28,10 +28,11 @@ const TopAppBar = styled(AppBar)(({ theme }) => ({
   color: theme.palette.text.primary
 }));
 
-function TopBar() {
+function TopBar({ navBarToggle }) {
   const [isFocused, setIsFocused] = React.useState(false);
 
   const { data: session } = useSession();
+  console.log('🚀 ~ file: TopBar.js ~ line 35 ~ TopBar ~ session', session);
 
   const borderSeter = () => {
     if (isFocused) {
@@ -45,7 +46,11 @@ function TopBar() {
     <TopAppBar>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box component={'span'} sx={{ display: 'flex', alignItems: 'center' }}>
-          <IconButton sx={{ marginLeft: '-10px' }} color="inherit">
+          <IconButton
+            sx={{ marginLeft: '-10px' }}
+            color="inherit"
+            onClick={navBarToggle}
+          >
             <Icon name="bgMenu" />
           </IconButton>
           {/* <Image src={'/YouTube-Logo.png'} width={90} height={55} /> */}

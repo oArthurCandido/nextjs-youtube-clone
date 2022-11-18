@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import Head from 'next/head';
 import TopBar from './TopBar';
 import NavBar from './NavBar';
+import userWindowSize from 'src/hooks/userWindowSize';
 
 function Layout({ children, title }) {
+  const [navBarHyde, setNavBarHyde] = useState(false);
+  const [navBarDesktopOpen, setNavBarDesktopOpen] = useState(true);
+  const [navBarSetter, setNavBarSetter] = useState(true);
+
+  const windowSize = userWindowSize();
+  var w = windowSize.width;
+
+  const navBarToggle = () => {
+    if (w > 650) {
+      setNavBarDesktopOpen(!navBarDesktopOpen);
+    } else {
+      setNavBarSetter(!navBarSetter);
+    }
+  };
+
   const theme = useTheme();
 
   const Root = styled(Box)({
@@ -48,8 +64,15 @@ function Layout({ children, title }) {
         <title>{title}</title>
       </Head>
       <Root id="BodyWrapper">
-        <TopBar />
-        <NavBar />
+        <TopBar navBarToggle={navBarToggle} />
+        <NavBar
+          navBarHyde={navBarHyde}
+          setNavBarHyde={setNavBarHyde}
+          navBarToggle={navBarToggle}
+          navBarDesktopOpen={navBarDesktopOpen}
+          navBarSetter={navBarSetter}
+          setNavBarSetter={setNavBarSetter}
+        />
         <Wrapper>
           <ContentContainer>
             <Content>{children}</Content>
