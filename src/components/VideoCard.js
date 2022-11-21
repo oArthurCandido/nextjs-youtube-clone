@@ -18,7 +18,7 @@ function videoCard({ item }) {
   const router = useRouter();
 
   return (
-    <Box sx={{ width: '100%', maxWidth: '100%' }}>
+    <Box mt={2} sx={{ width: '100%', maxWidth: '100%' }}>
       <Image
         alt={item.title}
         src={item.thumb}
@@ -39,7 +39,18 @@ function videoCard({ item }) {
           SS
         </Avatar>
         <Box pl={2} sx={{ maxWidth: '100%' }}>
-          <Typography mr={5} sx={{ maxWidth: '100%' }} variant={'h5'} noWrap>
+          <Typography
+            mr={5}
+            variant={'h6'}
+            sx={{
+              maxWidth: '100%',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: '2',
+              WebkitBoxOrient: 'vertical'
+            }}
+          >
             {item.title}
           </Typography>
           <Typography variant={'body2'} noWrap>

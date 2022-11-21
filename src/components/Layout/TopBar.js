@@ -32,13 +32,20 @@ function TopBar({ navBarToggle }) {
   const [isFocused, setIsFocused] = React.useState(false);
 
   const { data: session } = useSession();
-  console.log('🚀 ~ file: TopBar.js ~ line 35 ~ TopBar ~ session', session);
 
   const borderSeter = () => {
     if (isFocused) {
       return '1px solid #175285';
     } else {
       return '1px solid #b8b8b8';
+    }
+  };
+
+  const rightBorderSeter = () => {
+    if (isFocused) {
+      return '3px solid #000';
+    } else {
+      return 'none';
     }
   };
 
@@ -74,10 +81,14 @@ function TopBar({ navBarToggle }) {
               p: '2px 4px',
               display: 'flex',
               alignItems: 'center',
-              width: 400,
+              maxWidth: 400,
               borderRadius: '20px 0 0 20px',
               boxShadow: 'none',
               border: borderSeter
+              // borderRight: borderSeter,
+              // borderLeft: borderSeter,
+              // borderTop: borderSeter,
+              // borderBottom: borderSeter
             }}
           >
             {isFocused ? (
@@ -104,12 +115,16 @@ function TopBar({ navBarToggle }) {
               backgroundColor: '#F6F6F6',
               marginLeft: '-10px',
               borderRadius: '0 20px 20px 0',
-              border: '1px solid #b8b8b8'
+              border: '1px solid #b8b8b8',
+              '&:hover': {
+                backgroundColor: '#e6e6e6'
+              }
             }}
             aria-label="search"
           >
             <Icon name={'magnify'} color={'black'} size={'md'} />
           </Button>
+
           <IconButton sx={{ marginLeft: '7px' }} color={'inherit'}>
             <Microphone sx={{ fontSize: '23px' }} />
           </IconButton>

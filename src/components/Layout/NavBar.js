@@ -7,20 +7,25 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Typography from '@mui/material/Typography';
 import Cloud from '@mui/icons-material/Cloud';
-import userWindowSize from 'src/hooks/userWindowSize';
+import useWindowSize from 'src/hooks/useWindowSize';
 
 import Icon from 'src/components/Icons/Icon';
 import styled from '@mui/material/styles/styled';
 
 import { createSvgIcon } from '@mui/material/utils';
 import theme from 'src/theme';
+import { Wisdom } from 'aws-sdk';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 function NavBar({
   navBarHyde,
   navBarDesktopOpen,
   navBarSetter,
   setNavBarSetter,
-  setNavBarHyde
+  setNavBarHyde,
+  isDesktop,
+  w
 }) {
   const menuItems = [
     {
@@ -37,20 +42,6 @@ function NavBar({
     }
   ];
 
-  const windowSize = userWindowSize();
-
-  const PaperG = styled(Paper)(({ theme }) => ({
-    paddingTop: '60px',
-    width: 240,
-    height: '100%',
-    // [theme.breakpoints.down('md')]: {
-    //   display: 'block'
-    // },
-    boxShadow: 'none'
-  }));
-
-  var w = windowSize.width;
-
   var desktop = true;
 
   if (w < 650) {
@@ -62,6 +53,16 @@ function NavBar({
 
     desktop = true;
   }
+
+  const PaperG = styled(Paper)(({ theme }) => ({
+    paddingTop: '60px',
+    width: 240,
+    height: '100%',
+    // [theme.breakpoints.down('md')]: {
+    //   display: 'block'
+    // },
+    boxShadow: 'none'
+  }));
 
   return (
     <PaperG hidden={desktop ? navBarDesktopOpen : navBarSetter}>

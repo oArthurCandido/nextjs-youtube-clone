@@ -4,15 +4,18 @@ import { Box } from '@mui/material';
 import Head from 'next/head';
 import TopBar from './TopBar';
 import NavBar from './NavBar';
-import userWindowSize from 'src/hooks/userWindowSize';
+import userWindowSize from 'src/hooks/useWindowSize';
+import { useEffect } from 'react';
 
 function Layout({ children, title }) {
   const [navBarHyde, setNavBarHyde] = useState(false);
-  const [navBarDesktopOpen, setNavBarDesktopOpen] = useState(true);
+  const [navBarDesktopOpen, setNavBarDesktopOpen] = useState(false);
   const [navBarSetter, setNavBarSetter] = useState(true);
 
   const windowSize = userWindowSize();
   var w = windowSize.width;
+
+  const isDesktop = windowSize.width >= 760;
 
   const navBarToggle = () => {
     if (w > 650) {
@@ -66,6 +69,8 @@ function Layout({ children, title }) {
       <Root id="BodyWrapper">
         <TopBar navBarToggle={navBarToggle} />
         <NavBar
+          w={w}
+          isDesktop={isDesktop}
           navBarHyde={navBarHyde}
           setNavBarHyde={setNavBarHyde}
           navBarToggle={navBarToggle}
